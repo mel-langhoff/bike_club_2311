@@ -46,7 +46,7 @@ RSpec.describe Biker do
     end
 
     it "#personal_record" do 
-    # lowest tiem recorded for ride, return false if ride not completed
+        # lowest time recorded for ride, return false if ride not completed
         @biker2.learn_terrain!(:gravel)
         @biker2.learn_terrain!(:hills)
         @biker2.log_ride(@ride2, 65.0)

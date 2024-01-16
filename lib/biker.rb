@@ -22,5 +22,12 @@ class Biker
         @acceptable_terrain.include?(ride.terrain) && distance >= @max_distance
     end
 
-
+    def personal_record(ride)
+        all_distances = @rides[ride]
+        if all_distances.empty?
+            false
+        else
+            all_distances.min
+        end
+    end
 end
