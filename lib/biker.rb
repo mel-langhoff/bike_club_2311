@@ -30,4 +30,17 @@ class Biker
             all_distances.min
         end
     end
+
+    def eligible_for_ride?(ride)
+        @acceptable_terrain.include?(ride.terrain) && total_distance(ride) >= @max_distance
+    end
+
+    def total_distance(ride)
+        if ride.loop?
+            ride.distance
+        else
+            2 * ride.distance
+        end
+    end
+
 end

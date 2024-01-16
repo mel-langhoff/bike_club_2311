@@ -17,4 +17,18 @@ class BikeClub
         biker_with_most_rides
     end
 
+    # select method to create new array, lkasl;jgf;ljs;gj;
+    def bikers_eligible(ride)
+        @bikers.select do |biker|
+            biker.eligible_for_ride?(ride)
+        end
+    end
+
+    def best_time(ride)
+        biker_with_best_time = @bikers.min_by do |biker|
+            biker.personal_record(ride)
+        end
+        biker_with_best_time
+    end
+
 end

@@ -42,6 +42,42 @@ RSpec.describe BikeClub do
         expect(@bikeclub.most_rides).to eq(@biker)
     end
 
+    xit "#bikers_eligible" do
+        @biker.learn_terrain!(:gravel)
+        @biker.learn_terrain!(:hills)
+        @biker.log_ride(@ride1, 3)
+        # @biker.log_ride(@ride2, 60.9)
 
+        @biker2.learn_terrain!(:gravel)
+        @biker2.log_ride(@ride1, 95.0)
+        # @biker2.log_ride(@ride2, 65.0)
+
+        @bikeclub.add_biker(@biker)
+        @bikeclub.add_biker(@biker2)
+        expect(@bikeclub.bikers).to eq([@biker, @biker2])
+        # require 'pry'; binding.pry
+
+        expect(@bikeclub.bikers_eligible(@ride1)).to eq([@biker])
+    end
+
+    it "#best_time" do
+        @biker.learn_terrain!(:gravel)
+        @biker.learn_terrain!(:hills)
+        @biker.log_ride(@ride1, 92.5)
+        @biker.log_ride(@ride1, 91.1)
+        @biker.log_ride(@ride2, 60.9)
+
+        @biker2.learn_terrain!(:gravel)
+        @biker2.learn_terrain!(:hills)
+        @biker2.log_ride(@ride1, 95.0)
+        @biker2.log_ride(@ride2, 59.0)
+
+        @bikeclub.add_biker(@biker)
+        @bikeclub.add_biker(@biker2)
+        expect(@bikeclub.bikers).to eq([@biker, @biker2])
+
+        expect(@bikeclub.best_time(@ride1)).to eq(@biker)
+        expect(@bikeclub.best_time(@ride2)).to eq(@biker2)
+    end
 
 end
