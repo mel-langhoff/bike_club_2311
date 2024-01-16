@@ -45,4 +45,15 @@ RSpec.describe Biker do
         expect(@biker2.rides[@ride2]).to eq([65.0])  # Check the distances for @ride2
     end
 
+    it "#personal_record" do 
+    # lowest tiem recorded for ride, return false if ride not completed
+        @biker2.learn_terrain!(:gravel)
+        @biker2.learn_terrain!(:hills)
+        @biker2.log_ride(@ride2, 65.0)
+        @biker2.log_ride(@ride2, 70.0)
+
+        expect(@biker2.personal_record(@ride2)).to eq(65.0)
+        expect(@biker2.personal_record(@ride1)).to be false
+    end
+
 end
