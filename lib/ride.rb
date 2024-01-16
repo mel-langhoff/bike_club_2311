@@ -8,4 +8,16 @@ class Ride
         @terrain = ride_data[:terrain]
     end
 
+    def loop?
+        @loop
+    end
+
+    def total_distance
+        if @loop
+            @distance
+        else
+            2 * @distance
+        end
+    end
+
 end
