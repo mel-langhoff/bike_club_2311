@@ -19,7 +19,7 @@ class Biker
     end
 
     def bikeable?(ride, distance)
-        @acceptable_terrain.include?(ride.terrain) && @max_distance >= distance
+        @acceptable_terrain.include?(ride.terrain) && distance >= @max_distance
     end
 
 
