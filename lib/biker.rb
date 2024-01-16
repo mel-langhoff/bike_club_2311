@@ -4,7 +4,7 @@ class Biker
     def initialize(name, max_distance)
         @name = name
         @max_distance = max_distance
-        @rides = {}
+        @rides = Hash.new { |hash, key| hash[key] = [] }
         @acceptable_terrain = []
     end
 
@@ -14,20 +14,13 @@ class Biker
 
     def log_ride(ride, distance)
         if bikeable?(ride, distance)
-            if @rides[ride].nil?
-                @rides[ride] = []
-            end
-            @rides[ride] << distance
+          @rides[ride] << distance
         end
     end
 
     def bikeable?(ride, distance)
-        @acceptable_terrain.include?(ride.terrain) && distance <= @max_distance
+        @acceptable_terrain.include?(ride.terrain) && @max_distance >= distance
     end
 
-    def personal_record(ride)
-        @rides.key?(ride)
-        @rides[ride].max
-    end
 
 end
