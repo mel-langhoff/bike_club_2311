@@ -45,7 +45,7 @@ RSpec.describe BikeClub do
     xit "#bikers_eligible" do
         @biker.learn_terrain!(:gravel)
         @biker.learn_terrain!(:hills)
-        @biker.log_ride(@ride1, 3)
+        @biker.log_ride(@ride1, 91.1)
         # @biker.log_ride(@ride2, 60.9)
 
         @biker2.learn_terrain!(:gravel)
